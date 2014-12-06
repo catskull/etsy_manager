@@ -1,0 +1,8 @@
+.h1 Orders
+
+- if @orders.any?
+  - @orders.each do |order|
+    = order.body
+    = order.email
+- else
+  Oops, doesn't look like there are any orders.
