@@ -1,9 +1,9 @@
 class EmailProcessor
-  def initialzie(email)
+  def initialize(email)
     @email = email
   end
 
   def process
-    Order.create!({ body: email.body, email: email.from })
+    Order.create(body: @email.body, email: @email.from[:email])
   end
 end
