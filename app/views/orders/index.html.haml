@@ -1,8 +1,10 @@
-.h1 Orders
+%h1
+  = "#{@orders.count} Orders"
 
 - if @orders.any?
   - @orders.each do |order|
-    = order.body
-    = order.email
+    %p
+      = order.customer.email
+    %br
 - else
   Oops, doesn't look like there are any orders.
