@@ -1,9 +1,14 @@
 %h1
-  = "#{@orders.count} Orders"
+  = "#{@orders.count} Orders Total"
 
 - if @orders.any?
+  %h2
+    = @orders.map{ |o| o.created_at.to_date == Date.today }.count
+    Orders Today
   - @orders.each do |order|
     %p
+      = l order.created_at
+      %br
       = order.customer.email
     %br
 - else
