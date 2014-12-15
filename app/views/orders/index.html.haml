@@ -3,7 +3,7 @@
 
 - if @orders.any?
   %h2
-    = @orders.map{ |o| o.created_at.to_date == Date.today }.count
+    = @orders.where(created_at: Date.today).count
     Orders Today
   - @orders.each do |order|
     %p
