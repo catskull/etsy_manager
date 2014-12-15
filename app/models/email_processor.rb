@@ -7,6 +7,7 @@ class EmailProcessor
     if @email.subject.include? 'Etsy Order Confirmation'
       # referrer_email = nil
       emails = @email.body.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i)
+      emails.reject!{ |e| e == 'david.degraw@gmail.com' }
       # raise emails.inspect
       customer_email = emails.first
       # customer_email = emails.detect{ |e| emails.count(e) > 1}
