@@ -3,7 +3,7 @@
 
 - if @orders.any?
   %h2
-    = @orders.where(created_at: Date.today).count
+    = @orders.where("created_at >= ?", Time.zone.now.beginning_of_day).count
     Orders Today
   - @orders.each do |order|
     %p
