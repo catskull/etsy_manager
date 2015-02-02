@@ -1,15 +1,29 @@
-%h1
-  = "#{@orders.count} Orders Total"
+.container
 
-- if @orders.any?
-  %h2
-    = @orders.where("created_at >= ?", Time.zone.now.beginning_of_day).count
-    Orders Today
-  - @orders.each do |order|
-    %p
-      = l order.created_at
-      %br
-      = order.customer.email
-    %br
-- else
-  Oops, doesn't look like there are any orders.
+  .row
+    .one.column
+
+  .row
+    .ten.columns
+      %h1
+        = "#{@orders.count} Orders Total"
+
+      %h2
+        = @orders.where("created_at >= ?", Time.zone.now.beginning_of_day).count
+        Orders Today
+
+      %table
+        %thead
+          %tr
+            %th Email
+            %th Date
+          - if @orders.any?
+            - @orders.each do |order|
+              %tbody
+                %tr
+                  %td
+                    = order.customer.email
+                  %td
+                    = order.created_at
+  .row
+    .one.column
