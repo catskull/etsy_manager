@@ -1,9 +1,33 @@
+.row
+  %nav.nav-collapse
+    %ul
+      %li
+        %a{:href => "#"} Home
+      %li
+        %a{:href => "#"} About
+      %li
+        %a{:href => "#"} Projects
+      %li
+        %a{:href => "#"} Contact
+  :javascript
+    var nav = responsiveNav(".nav-collapse", {
+      animate: true, // Boolean: Use CSS3 transitions, true or false
+      transition: 284, // Integer: Speed of the transition, in milliseconds
+      label: "Menu", // String: Label for the navigation toggle
+      insert: "after", // String: Insert the toggle before or after the navigation
+      closeOnNavClick: true, // Boolean: Close the navigation when one of the links are clicked
+      openPos: "relative", // String: Position of the opened nav, relative or static
+      navClass: "nav-collapse", // String: Default CSS class. If changed, you need to edit the CSS too!
+      navActiveClass: "js-nav-active", // String: Class that is added to  element when nav is active
+      jsClass: "js", // String: 'JS enabled' class which is added to  element
+      init: function(){}, // Function: Init callback
+      open: function(){},
+      close: function(){}
+    });
 .container
-
   .row
     .one.column
 
-  .row
     .ten.columns
       %h1
         = "#{@orders.count} Orders Total"
@@ -25,5 +49,4 @@
                     = order.customer.email
                   %td
                     = order.created_at
-  .row
     .one.column
